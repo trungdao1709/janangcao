@@ -1,62 +1,74 @@
-const game ={
-    team1: 'Bayern Munich',
-    team2: 'Borrussia Dortmund',
-    players: [
-        [
-            'mane',
-            'mane2',
-            'mane3',
-            'mane4',
-            'mane5',
-            'mane6',
-            'mane7',
-            'mane8',
-            'mane9',
-            'mane10',
-            'mane11',
-        ],
-        [
-            'salah1',
-            'salah2',
-            'salah3',
-            'salah4',
-            'salah5',
-            'salah6',
-            'salah7',
-            'salah8',
-            'salah9',
-            'salah10',
-            'salah11',
-        ],
-    ],
-    score: '4.0',
-    srored:['salah10','salah7','mane','mane2','mane3'],
-    date: 'Nov 9th, 2023',
-    odds:{
-        team1: 1.33,
-        x: 3.25,
-        team2: 6.5
+const weekday = ['mon','tue','wed','thu','fri','sat','sun']
+// enhanced obj literal we can shortcut some thing in obj like this
+let openingHours = {
+    //enhance obj literals with name of obj  
+    [weekday[0]]: {
+        open: 12,
+        close: 22
     },
-    scorer : function(...players){
-        console.log(...this.srored,...players)
-    }
-}
-//1
-for(let [i, scorer] of game.srored.entries()){
-    console.log(`Goat ${i+1}: ${scorer}`)
-}
-//2
-let odds = Object.values(game?.odds) 
-let ave = 0
-for (let odd of odds){
-    // console.log(odd)
-    ave += odd
-}
-ave/=odds.length
-console.log(ave)
-//3
+    [weekday[3]]: {
+        open: 11,
+        close: 23
+    },
+    [weekday[5]]: {
+        open: 0,
+        close: 24
+    },
+} 
 
-for (let [name, value] of Object.entries(game.odds)){
-    const check = name === 'x' ? 'draw' : 'thắng của ' + game[name]
-    console.log(`Tỉ lệ ${check} là ${value}`)
+let restaurant = {
+    name : 'Classico Italiano',
+    location: 'Van tien dung ',
+    categories : ['Italan', 'Pizzaria','Oragenic','Vegetarian'],
+    starterMenu : ['Forcaccia', 'Bruschetta','Gralic bread','Salad'],
+    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+    //es6 enhanced obj literal
+    openingHours,
+    // make function order in the restaurant to get what customer want in starterMenu and mainMenu  
+        // enhanced obj literal with function it still work
+    order (starterIndex, mainIndex){
+        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+    } ,
+    // enhanced obj literal with function it still work
+    orderDelivery({time=1,adress='no adress',mainIndex= 0,starterIndex=1}){
+        //using template string
+        console.log(`Order received! ${this.starterMenu[starterIndex]}
+        and ${this.mainMenu[mainIndex]} will be delivered to ${adress} at ${time}`)
+    },
+    // enhanced obj literal with function it still work
+
+    orderPizza(mainIngredient, ...ortherIngredient){
+        console.log(mainIngredient)
+        console.log(ortherIngredient)
+    }
+    
+};
+// Set just collection of unique value  that mean set can never have duplicates value like this:
+const ordersSet = new Set(['pasta','pizza','pizza']);// return an obj
+// console.log(ordersSet) // {'pasta','pizza'}
+// size of obj
+console.log(ordersSet.size)//2
+// check if element exist
+console.log(ordersSet.has('pizza')) // true
+console.log(ordersSet.has('pizzasdasd')) // false
+// add element
+ordersSet.add('tomato')
+//delete element
+ordersSet.delete('tomato')
+console.log(ordersSet)
+//deleteall 
+// console.log(ordersSet.clear())
+// we cant get value  out of sets with manual way 
+
+
+//using looping to get value 
+for(let item of ordersSet){
+    console.log(item)
 }
+//if input value not an Array it will be return each characters and there are no duplicates
+console.log(new Set('pasta')) // {p,a,s,t}
+
+//Sets use to remote dupplicates element
+const staff = ['chef','waiter','manager','chef']
+const newArr = [...new Set(staff)]
+console.log(newArr) //
