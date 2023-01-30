@@ -1,10 +1,14 @@
 /* The rest pattern is the same syntax with sread operator ...variable
  And the different is the sread use to make a mutiple function or take all elements out the array 
  or make a new arr but the same value with initial array
- But rest pattern use to collect mutiple element and condense[cô đọng] them into an array */
+ But rest pattern use to collect mutiple element and condense them into an array */
+//  Mẫu còn lại có cùng cú pháp với toán tử sread ...variable
+//  Và khác ở chỗ sử dụng sread để tạo hàm đa biến hoặc lấy tất cả các phần tử ra khỏi mảng
+//  hoặc tạo một mảng mới nhưng cùng giá trị với mảng ban đầu
+//  Nhưng mẫu còn lại sử dụng để thu thập nhiều phần tử và cô đọng chúng thành một mảng
  let restaurant = {
     name : 'Classico Italiano',
-    location: 'Nam tu Liem ',
+    location: 'Van tien dung ',
     categories : ['Italan', 'Pizzaria','Oragenic','Vegetarian'],
     starterMenu : ['Forcaccia', 'Bruschetta','Gralic bread','Salad'],
     mainMenu: ['Pizza', 'Pasta', 'Risotto'],
